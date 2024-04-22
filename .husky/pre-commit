@@ -1,2 +1,4 @@
+#!/bin/sh
+
 echo "pre-commit hook: start"
 echo "pre-commit hook: end"
