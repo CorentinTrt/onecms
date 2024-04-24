@@ -11,9 +11,12 @@
     "-- FORMAT & LINT --": "----------",
     "format:check": "npx prettier . --config ./common/configs/.prettierrc.json --check",
     "format:fix": "npx prettier . --config ./common/configs/.prettierrc.json --write",
+    "lint:check": "eslint . --config ./common/configs/eslint.config.js",
+    "lint:fix": "eslint . --config ./common/configs/eslint.config.js --fix",
     "prepare": "husky"
   },
   "devDependencies": {
+    "eslint": "~9.1.1",
     "husky": "~9.0.11",
     "prettier": "~3.2.5"
   },

@@ -1,4 +1,6 @@
-'use strict';
+"use strict";
+
+console.log();
 
 /* eslint-disable no-unused-vars */
 module.exports = (config, webpack) => {
