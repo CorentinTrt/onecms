@@ -1,8 +1,8 @@
 #!/bin/sh
 
-echo "pre-commit hook: start"
+echo "\033[1;34m -- pre-commit hook: start \033[0m"
 
 npm run format:check
 npm run lint:check
 
-echo "pre-commit hook: end"
+echo "\033[1;34m -- pre-commit hook: end \033[0m"

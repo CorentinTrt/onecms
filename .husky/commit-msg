@@ -1,14 +1,14 @@
 #!/bin/sh
 
-echo "commit-msg hook: start"
+echo "\033[1;34m -- commit-msg hook: start \033[0m"
 
-if ! head -1 "$1" | grep -qE "^(build|chore|ci|docs|fix|feat|perf|refactor|revert|security|style|tests)(\(.+?\))?: .{1,}$"; then
-    echo "commit-msg hook: aborting commit - Your commit message doesn't respect conventional commit syntax" >&2
+if ! head -1 "$1" | grep -qE "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|security|style|tests)(\(.+?\))?: .{1,}$"; then
+    echo "\033[1;31m commit-msg hook: aborting commit - Your commit message doesn't respect conventional commit syntax \033[0m" >&2
     exit 1
 fi
 if ! head -1 "$1" | grep -qE "^.{1,88}$"; then
-    echo "commit-msg hook: aborting commit - Your commit message is too long" >&2
+    echo "\033[1;31 commit-msg hook: aborting commit - Your commit message is too long \033[0mt" >&2
     exit 1
 fi
 
-echo "commit-msg hook: end"
+echo "\033[1;34m -- commit-msg hook: end \033[0m"
