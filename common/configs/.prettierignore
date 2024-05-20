@@ -1,1 +1,7 @@
+# Global
 **/*.md
+
+# Strapi
+.strapi
+.strapi-updater.json
+build
