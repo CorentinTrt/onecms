@@ -3,10 +3,7 @@ const config = {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/changelog',
-    [
-      '@semantic-release/release-notes-generator',
-      { releaseRules: { type: 'ci', release: 'patch' } },
-    ],
+    '@semantic-release/release-notes-generator',
     '@semantic-release/npm',
     [
       '@semantic-release/git',
