@@ -1,0 +1,36 @@
+name: Check code formatting and linting
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+
+jobs:
+  check-formating-and-linting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Checkout code
+        id: checkout_code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        id: setup_node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Clean Install
+        id: clean_install
+        run: npm ci
+
+      - name: Check formatting
+        id: check_formatting
+        run: npm run format:check
+
+      - name: Check linting
+        id: check_linting
+        run: npm run lint:check
