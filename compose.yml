@@ -1,0 +1,49 @@
+services:
+  strapi-develop:
+    profiles:
+      - develop
+    build:
+      context: ./
+      dockerfile: .docker/develop/Dockerfile
+    container_name: strapi-develop
+    ports:
+      - '1337:1337'
+    volumes:
+      - ./config:/srv/onecms/config
+      - ./src:/srv/onecms/src
+      - ./package.json:/srv/onecms/package.json
+      - ./yarn.lock:/srv/onecms/yarn.lock
+      - ./.env:/srv/onecms/app/.env
+      - ./public/uploads:/srv/onecms/public/uploads
+    env_file:
+      - .env
+    networks:
+      - strapi-net-develop
+    depends_on:
+      - strapi-db-develop
+    restart: unless-stopped
+
+  strapi-db-develop:
+    profiles:
+      - develop
+    image: mysql:5.7
+    container_name: strapi-db-develop
+    command: --default-authentication-plugin=mysql_native_password
+    platform: linux/amd64
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_USER: ${DATABASE_USERNAME}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+    env_file:
+      - .env
+    networks:
+      - strapi-net-develop
+    restart: unless-stopped
+
+networks:
+  strapi-net-develop:
+    name: strapi-net-develop
+    driver: bridge

@@ -25,12 +25,12 @@ jobs:
 
       - name: Clean Install
         id: clean_install
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Check formatting
         id: check_formatting
-        run: npm run format:check
+        run: yarn format:check
 
       - name: Check linting
         id: check_linting
-        run: npm run lint:check
+        run: yarn lint:check
